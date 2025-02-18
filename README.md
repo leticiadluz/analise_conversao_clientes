@@ -42,13 +42,17 @@ com versionamento para acompanhar atualizações e manter a rastreabilidade das 
 
 ## 3. Visão geral e preparação dos dados
 
-- Os dados foram gerados sintéticamente para simular um cenário de um e-commerce. 
+- **Fonte de Dados:** 
+Os dados foram gerados sinteticamente com base em instruções fornecidas ao chat, 
+detalhando as tabelas e colunas desejadas para simular um cenário de e-commerce.
 As tabelas principais incluem:
     - **Dim_Clientes:** Dados sobre características e segmento de cada cliente.
     - **Dim_Segmentos:** Classificação dos diferentes segmentos de compra.
     - **Fato_Conversoes:** Registro dos clientes dos grupos de controle e intervenção, 
     indicando se realizaram uma conversão.
     - **Fato_Orders:** Informações detalhadas sobre os pedidos efetuados.
+    
+Os dados gerados estão no formato CSV.
 
 ### 3.1  Carregamento dos dados no SQL Server (verificar)
 
