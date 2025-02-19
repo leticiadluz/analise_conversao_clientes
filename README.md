@@ -15,7 +15,7 @@ de desconto para compras acima de R$ 200 e utilizou um Teste A/B para avaliar
 sua eficácia.
 
 Para garantir uma análise robusta, utilizamos um pipeline completo de DBT 
-para transformação dos dados, SQL Server para armazenamento e Power BI 
+para transformação dos dados, PostgreSQL para armazenamento e Power BI 
 para visualização dos resultados.
 
 
@@ -33,9 +33,9 @@ podemos inferir o impacto da campanha.
 ### 2.1. Pipeline de Dados
 
 O pipeline do projeto segue estas etapas:
-- **Extração e Armazenamento:** Os dados são carregados no SQL Server.
+- **Extração e Armazenamento:** Os dados são carregados no PostgreSQL.
 - **Transformação no DBT:** O DBT será utilizado para transformar e preparar os dados, 
-facilitando a análise e respondendo às perguntas de negócios..
+facilitando a análise e respondendo às perguntas de negócio.
 - **Análise Estatística no Python:** Realizamos o teste A/B para validar os resultados.
 - **Visualização no Power BI:** Criamos dashboards interativos para tomada de decisão, 
 com versionamento para acompanhar atualizações e manter a rastreabilidade das análises.
@@ -43,8 +43,8 @@ com versionamento para acompanhar atualizações e manter a rastreabilidade das 
 ## 3. Visão geral e preparação dos dados
 
 - **Fonte de Dados:** 
-Os dados foram gerados sinteticamente com base em instruções fornecidas ao chat, 
-detalhando as tabelas e colunas desejadas para simular um cenário de e-commerce.
+Os dados foram gerados sinteticamente com base em instruções fornecidas ao chatgpt, 
+detalhando as tabelas e colunas desejadas para simular um cenário de um e-commerce.
 As tabelas principais incluem:
     - **Dim_Clientes:** Dados sobre características e segmento de cada cliente.
     - **Dim_Segmentos:** Classificação dos diferentes segmentos de compra.
@@ -54,11 +54,13 @@ As tabelas principais incluem:
     
 Os dados gerados estão no formato CSV.
 
-### 3.1  Carregamento dos dados no SQL Server (verificar)
+### 3.1  Carregamento dos dados no PostgreSQL
 
-As tabelas são criadas no SQL Server antes do carregamento dos arquivos CSV. 
-Em seguida, os dados são inseridos utilizando BULK INSERT, COPY ou ferramentas 
-gráficas do SSMS.
+Antes do carregamento dos arquivos CSV, foram criadas as tabelas no **PostgreSQL**, 
+garantindo que todas as chaves primárias (PK) e chaves estrangeiras (FK) estivessem 
+corretamente definidas.
+Após a criação das tabelas, os dados foram inseridos a partir de arquivos CSV.
+Utilizamos a importação direta via interface gráfica no pgAdmin. 
 
 ### 3.2. Modelagem no DBT (verificar)
 
