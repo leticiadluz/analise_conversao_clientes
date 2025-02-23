@@ -1,4 +1,4 @@
-# Análise de Conversão de Clientes com Teste A/B, DBT e Power BI
+# Análise de Conversão de Clientes com Teste A/B, SQL e Power BI
 
 ## Resumo
 
@@ -34,10 +34,11 @@ podemos inferir o impacto da campanha.
 
 O pipeline do projeto segue estas etapas:
 - **Extração e Armazenamento:** Os dados são carregados no PostgreSQL.
-- **Transformação no DBT:** O DBT será utilizado para transformar e preparar os dados, 
-facilitando a análise e respondendo às perguntas de negócio.
-- **Análise Estatística no Python:** Realizamos o teste A/B para validar os resultados.
-- **Visualização no Power BI:** Criamos dashboards interativos para tomada de decisão, 
+- **Transformação dos Dados:** Integramos o banco de dados ao Python para executar as análises e 
+transformações necessárias com linguagem SQL e responder às questões de negócio. Para isso, as tabelas serão 
+unificadas, viabilizando a execução dos testes A/B e as análises no Power BI.
+- **Análise Estatística no Python:** Aplicamos o teste A/B para validar os resultados.
+- **Visualização no Power BI:** Desenvolvemos dashboards interativos para tomada de decisão, 
 com versionamento para acompanhar atualizações e manter a rastreabilidade das análises.
 
 ## 3. Visão geral e preparação dos dados
@@ -46,33 +47,38 @@ com versionamento para acompanhar atualizações e manter a rastreabilidade das 
 Os dados foram gerados sinteticamente com base em instruções fornecidas ao chatgpt, 
 detalhando as tabelas e colunas desejadas para simular um cenário de um e-commerce.
 As tabelas principais incluem:
-    - **Dim_Clientes:** Dados sobre características e segmento de cada cliente.
+    - **Dim_Clientes:** Dados sobre características e segmento preferencial de compra de 
+    cada cliente.
     - **Dim_Segmentos:** Classificação dos diferentes segmentos de compra.
     - **Fato_Conversoes:** Registro dos clientes dos grupos de controle e intervenção, 
     indicando se realizaram uma conversão.
     - **Fato_Orders:** Informações detalhadas sobre os pedidos efetuados.
     
 Os dados gerados estão no formato CSV.
-
-### 3.1  Carregamento dos dados no PostgreSQL
-
 Antes do carregamento dos arquivos CSV, foram criadas as tabelas no **PostgreSQL**, 
 garantindo que todas as chaves primárias (PK) e chaves estrangeiras (FK) estivessem 
 corretamente definidas.
 Após a criação das tabelas, os dados foram inseridos a partir de arquivos CSV.
 Utilizamos a importação direta via interface gráfica no pgAdmin. 
 
-### 3.2. Modelagem no DBT (verificar)
+## 4. Análises
 
-Criamos modelos para transformar e consolidar os dados, incluindo a tabela 
-ab_test_analysis, que une todas as informações necessárias.
+### 4.1 Perguntas de Negócios
 
-### 3.3 Teste Estatístico no Python (verificar)
+ Análise de Conversão:
+    - Qual a taxa de conversão geral dos clientes?
+    - Existe diferença entre a taxa de conversão do grupo controle vs. grupo de desconto?
 
-Rodamos um Teste Z para proporções para verificar se há diferença significativa 
-entre os grupos:
+Segmentação de Clientes:
+    - Qual segmento de compra (Higiene Pessoal e Cuidados, Livros, Acessórios, Computação.) converte mais?
+    - Como a idade ou gênero influencia a conversão?
 
-### 3.4. Visualização no Power BI (verificar)
+Análise de Receita:
+    - Qual a receita gerada pela campanha?
+    - Qual é o ticket médio dos pedidos dos clientes que converteram?
+    - Qual foi o ROI (Retorno sobre o Investimento) de cada campanha?
+
+### Visualização no Power BI (verificar)
 
 Criamos dashboards para visualizar as métricas, incluindo:
     - Taxa de Conversão por Grupo (Controle vs. Intervenção)
@@ -82,4 +88,4 @@ Criamos dashboards para visualizar as métricas, incluindo:
 Esses dashboards serão versionados para acompanhar melhorias e novas necessidades 
 de análise.
 
-# 4. Análise dos Resultados
+#  Análise dos Resultados
