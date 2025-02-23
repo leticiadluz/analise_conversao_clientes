@@ -65,18 +65,18 @@ Utilizamos a importação direta via interface gráfica no pgAdmin.
 
 ### 4.1 Perguntas de Negócios
 
- Análise de Conversão:
-    - Qual a taxa de conversão geral dos clientes?
-    - Existe diferença entre a taxa de conversão do grupo controle vs. grupo de desconto?
+ Análise de Conversão:  
+    - Qual a taxa de conversão geral dos clientes?  
+    - Existe diferença entre a taxa de conversão do grupo controle vs. grupo de desconto?  
 
-Segmentação de Clientes:
-    - Qual segmento de compra (Higiene Pessoal e Cuidados, Livros, Acessórios, Computação.) converte mais?
-    - Como a idade ou gênero influencia a conversão?
+Segmentação de Clientes:  
+    - Qual segmento de compra (Higiene Pessoal e Cuidados, Livros, Acessórios, Computação.) converte mais?  
+    - Como a idade ou gênero influencia a conversão?  
 
-Análise de Receita:
-    - Qual a receita gerada pela campanha?
-    - Qual é o ticket médio dos pedidos dos clientes que converteram?
-    - Qual foi o ROI (Retorno sobre o Investimento) de cada campanha?
+Análise de Receita:  
+    - Qual a receita gerada pela campanha?  
+    - Qual é o ticket médio dos pedidos dos clientes que converteram?  
+    - Qual foi o ROI (Retorno sobre o Investimento) de cada campanha?  
 
 ### Visualização no Power BI (verificar)
 
