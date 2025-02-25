@@ -13,6 +13,8 @@ uma empresa de e-commerce que vende produtos variados decidiu testar o
 impacto de uma campanha promocional. A empresa ofereceu um voucher de 15% 
 de desconto para compras acima de R$ 200 e utilizou um Teste A/B para avaliar 
 sua eficácia.
+- eXPLICAR toda a parte estatisca, grupo controle foi o envio de email
+da loja para causar lembranca mas sem voucher
 
 Para garantir uma análise robusta, utilizamos um pipeline completo de DBT 
 para transformação dos dados, PostgreSQL para armazenamento e Power BI 
@@ -65,18 +67,17 @@ Utilizamos a importação direta via interface gráfica no pgAdmin.
 
 ### 4.1 Perguntas de Negócios
 
- Análise de Conversão:  
+1. Análise de Conversão:  
     - Qual a taxa de conversão geral dos clientes?  
-    - Existe diferença entre a taxa de conversão do grupo controle vs. grupo de desconto?  
+    - Existe diferença entre a taxa de conversão do grupo controle vs. grupo de desconto?
+    - Qual segmento de compra (Higiene Pessoal e Cuidados, Livros, Acessórios, Computação.) converte mais?    
 
-Segmentação de Clientes:  
-    - Qual segmento de compra (Higiene Pessoal e Cuidados, Livros, Acessórios, Computação.) converte mais?  
+2. Segmentação de Clientes e comportamento de compra:  
     - Como a idade ou gênero influencia a conversão?  
+    - Existe uma relação entre a idade do cliente e o valor médio do pedido?
+    - Os clientes do grupo controle gastam mais do que os do grupo de intervenção?
 
-Análise de Receita:  
-    - Qual a receita gerada pela campanha?  
-    - Qual é o ticket médio dos pedidos dos clientes que converteram?  
-    - Qual foi o ROI (Retorno sobre o Investimento) de cada campanha?  
+
 
 ### Visualização no Power BI (verificar)
 
