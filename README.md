@@ -6,22 +6,67 @@
 
 Empresas de e-commerce frequentemente buscam maneiras de aumentar a conversão de 
 clientes. Uma abordagem comum é o uso de campanhas de e-mail com descontos. 
-Mas será que essas ofertas realmente influenciam a taxa de conversão? 
+Mas será que essa oferta realmente influencia a taxa de conversão? 
 
-Para responder a essas perguntas, criamos um cenário hipotético no qual 
+Para responder a essa pergunta, criamos um cenário hipotético no qual 
 uma empresa de e-commerce que vende produtos variados decidiu testar o 
 impacto de uma campanha promocional. A empresa ofereceu um voucher de 15% 
-de desconto para compras acima de R$ 200 e utilizou um Teste A/B para avaliar 
-sua eficácia.
-- eXPLICAR toda a parte estatisca, grupo controle foi o envio de email
-da loja para causar lembranca mas sem voucher
+de desconto para compras acima de R$ 200 para um grupo selecionado de clientes e utilizou um Teste A/B para avaliar sua eficácia.
 
-Para garantir uma análise robusta, utilizamos um pipeline completo de DBT 
-para transformação dos dados, PostgreSQL para armazenamento e Power BI 
-para visualização dos resultados.
+O teste A/B é uma metodologia de experimentação utilizada para comparar duas versões de uma variável (como um site, campanha de marketing ou funcionalidade de um produto) e determinar qual gera melhores resultados. Ele é amplamente aplicado em áreas como marketing digital, experiência do usuário (UX), design de produtos e ciência de dados.
+
+O teste A/B envolve a seleção aleatória de clientes para garantir que os grupos sejam homogêneos a fim de evitar vieses que possam distorcer os resultados. Ele é ideal para realizar comparações, pois, por exemplo, comparar grupos com base no tempo pode não ser adequado. A sazonalidade pode influenciar os resultados, tornando comparações temporais menos confiáveis. Assim, o teste A/B permite avaliar, dentro do mesmo período, os efeitos de uma ação em comparação à ausência dela, proporcionando resultados mais precisos e isentos de vieses temporais.
+
+Definição dos grupos:
+- Grupo Controle: Recebe a versão original (sem mudanças).
+- Grupo Variante: Recebe a versão modificada para testar o impacto da mudança.
+
+São observadas métricas-chave, como taxa de conversão, tempo de permanência e número de cliques. Os resultados são analisados para verificar se a diferença entre os grupos é estatisticamente significativa. Se a variante apresentar melhor desempenho, a mudança pode ser implementada permanentemente.
+
+### 1.1 Objetivo:
+- O objetivo principal é verificar se o envio de um e-mail contendo um voucher promocional aumenta a taxa de conversão dos usuários em comparação com um e-mail sem voucher.
+-  **Métrica de sucesso:** Taxa de conversão (compras realizadas após o recebimento do e-mail).
+
+### 1.2 Visão geral de alguns conceitos:
+
+a) **Teste de Hipótese:**  Um teste de hipótese 
+é um procedimento estatístico usado para avaliar se há evidências 
+suficientes nos dados para rejeitar uma suposição inicial (hipótese nula) sobre
+ uma população. Desta forma, utilizamos um teste de hipótese para avaliar 
+ a validade de uma afirmação (hipótese) sobre um parâmetro populacional, 
+ com base em dados amostrais.
+
+ b) **Hipótese Nula (H0):** A hipótese nula representa o estado 
+ padrão ou **a suposição inicial sobre os dados**. 
+ Ela assume que não há efeito, mudança ou diferença real. 
+ O objetivo do teste é tentar refutar essa hipótese com base nos dados.
+ Ela contém uma afirmação de igualdade: (=, ≤ , ≥).
+
+ c) **Hipótese Alternativa (H1 ou Ha):** A hipótese alternativa é a afirmação 
+ oposta à hipótese nula. Ela sugere que existe um efeito, 
+ uma diferença ou uma mudança real nos dados, ela contradiz H0 (≠).
+
+ d) **p-valor:** O p-valor é a probabilidade de observarmos um resultado tão 
+ extremo quanto o encontrado na amostra, assumindo que a hipótese nula (H0) 
+ seja verdadeira. Ou seja, qual a probabilidade 
+ de encontrar uma diferença(entre os grupos) ou um valor mais extremo dado 
+ que os grupos são iguais, dado que a diferença não existe. 
+
+ e) **Nível de significância:** O nível de significância (α) é um valor 
+ que define o quanto estamos dispostos a aceitar que um 
+ resultado pode ter ocorrido por acaso ao realizar um teste de hipótese. 
+
+ ### 1.3 Hipótese
+- O envio de um e-mail com um voucher promocional aumentará a taxa de conversão
+ em pelo menos X% em relação ao e-mail sem voucher.
+
+### 1.4 Público Alvo 
+- Homens e mulheres entre 18 e 70 anos.
+- Que tenham realizado uma compra nos últimos três meses.
+- Cuja última compra tenha sido de produtos dos seguintes segmentos: Higiene Pessoal e Cuidados, Livros, Acessórios ou Computação.
 
 
-## 2. Visão geral de alguns conceitos:
+## 2. 
 
 Para entender a abordagem do projeto, é essencial compreender alguns conceitos-chave:
 
