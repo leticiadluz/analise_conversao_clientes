@@ -142,7 +142,6 @@ Se realmente houver uma diferença entre as taxas de conversão dos grupos testa
 #### 3.5.1 Tamanho do Efeito
 O tamanho do efeito (Effect Size - ES), no contexto de um teste de hipóteses para taxas de conversão, é simplesmente a diferença entre a taxa de conversão atual e a taxa de conversão esperada (meta que queremos alcançar com a intervenção, como o uso do voucher promocional).   
 
-**Tamanho do Efeito** = 17% − 12% = 5%
 
 #### 3.5.2 Nível de significância 
 
@@ -160,7 +159,7 @@ Para garantir maior confiabilidade na detecção de um efeito real, será adotad
 
 Agora, para calcular o tamanho da amostra necessário, utilizaremos o software GPower, que nos ajudará a determinar o número de participantes com base no nível de significância, poder estatístico e tamanho do efeito desejados.
 
-- Acesse o GPower: Abra o navegador e vá para o site do [GPower:](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower)
+- Acesse o GPower: Abra o navegador e vá para o site do [GPower.](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower)
 - Baixe e Instale: Baixe a versão apropriada para o seu sistema operacional e instale o software.
 - Inicie o GPower: Após a instalação, abra o programa.
 - Selecione o Tipo de Teste: No menu principal, selecione o tipo de teste estatístico que você deseja realizar. 
@@ -174,7 +173,8 @@ Agora, para calcular o tamanho da amostra necessário, utilizaremos o software G
     - Power (1–β err prob): Este é o poder estatístico desejado, geralmente definido como 0.80 ou 0.90.
     - Allocation ratio N2/N1: Este é a razão de alocação entre os tamanhos dos dois grupos. Um valor de 1 significa que os dois grupos terão o mesmo número de participantes.
 
-Resultado: 
+**Resultado do cálculo amostral:**
+
 ![alt text](imagens/calculo_amostra.png)
 
 1.45 renata 
