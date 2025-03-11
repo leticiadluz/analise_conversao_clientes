@@ -1,4 +1,4 @@
-# Análise de Conversão de Clientes com Teste A/B, SQL e Power BI
+# Análise de Conversão de Clientes com Teste A/B, SQL e Python
 
 ## Resumo
 
@@ -6,23 +6,24 @@
 
 Empresas de e-commerce estão constantemente em busca de estratégias para aumentar a conversão de clientes. Uma abordagem comum é o uso de campanhas de e-mail marketing oferecendo descontos e incentivos. Mas será que essas ofertas realmente impactam a decisão de compra dos consumidores?
 
-Para responder a essa questão, criamos um cenário hipotético no qual uma empresa de e-commerce, que vende uma variedade de produtos, decidiu testar a eficácia de uma campanha promocional. O experimento foi conduzido por meio de um Teste A/B, no qual um grupo de clientes recebeu um voucher de 15% de desconto em compras acima de R$ 200, enquanto outro grupo recebeu apenas uma comunicação padrão, sem voucher.
+Para responder a essa questão, criamos um cenário hipotético no qual uma empresa de e-commerce, que vende uma variedade de produtos, decidiu testar a eficácia de uma campanha promocional. O experimento foi conduzido por meio de um Teste A/B, no qual um grupo de clientes recebeu um voucher de 15% de desconto em compras acima de R$ 100, enquanto outro grupo recebeu apenas uma comunicação padrão, sem voucher.
 
 Atualmente, a taxa de conversão dos usuários que recebem apenas a comunicação regular, cujo objetivo é reforçar a lembrança da marca e apresentar os produtos sem oferecer um incentivo direto para a compra, está em 12%. O teste tem como objetivo identificar se a inclusão do desconto pode gerar um aumento significativo na taxa de conversão e, consequentemente, impactar positivamente as vendas da empresa.
 
+### 1.1 Teste A/B
 O teste A/B é uma metodologia de experimentação utilizada para comparar duas versões de uma variável (como um site, campanha de marketing ou funcionalidade de um produto) e determinar qual gera melhores resultados. Ele é amplamente aplicado em áreas como marketing digital, experiência do usuário (UX), design de produtos e ciência de dados.
 
 O teste A/B envolve a seleção aleatória de clientes para garantir que os grupos sejam homogêneos a fim de evitar vieses que possam distorcer os resultados. Ele é ideal para realizar comparações, pois, por exemplo, comparar grupos com base no tempo pode não ser adequado. A sazonalidade pode influenciar os resultados, tornando comparações temporais menos confiáveis. Assim, o teste A/B permite avaliar, dentro do mesmo período, os efeitos de uma ação em comparação à ausência dela, proporcionando resultados mais precisos e isentos de vieses temporais.
 
-Definição dos grupos:
-- Grupo Controle: Recebe a versão original (sem mudanças).
-- Grupo Variante: Recebe a versão modificada para testar o impacto da mudança.
+São observadas métricas-chave, como taxa de conversão, tempo de permanência e número de cliques. Os resultados são analisados para verificar se a diferença entre os grupos é estatisticamente significativa. Se o grupo de teste apresentar melhor desempenho, a mudança pode ser implementada permanentemente.
 
-São observadas métricas-chave, como taxa de conversão, tempo de permanência e número de cliques. Os resultados são analisados para verificar se a diferença entre os grupos é estatisticamente significativa. Se a variante apresentar melhor desempenho, a mudança pode ser implementada permanentemente.
+Além disso, **um teste A/B é um teste estatístico de proporção**, pois compara taxas de sucesso entre dois grupos distintos. No contexto de um experimento para avaliar o impacto de um voucher promocional, por exemplo, o que está sendo medido é a proporção de usuários que realizaram uma conversão em cada grupo. No grupo controle (sem voucher), temos uma taxa de conversão p1, enquanto no grupo de teste (com voucher), temos uma taxa de conversão p2. O objetivo do teste é verificar se a diferença entre essas proporções é estatisticamente significativa ou se pode ter ocorrido apenas por acaso.
 
-### 1.1 Objetivo
+Para isso, utiliza-se o Teste Z para proporções, uma técnica estatística apropriada para comparar duas taxas de sucesso em populações independentes. O uso do teste de proporções no teste A/B é essencial porque muitos experimentos desse tipo lidam com métricas binárias, como converteu/não converteu, clicou/não clicou ou abriu/não abriu, etc. Comparar médias nesses casos não seria adequado, pois o que realmente importa é a taxa de sucesso dentro de cada grupo. Dessa forma, o teste A/B fornece uma maneira robusta de determinar, com rigor estatístico, se uma mudança específica gera um impacto real na métrica avaliada.
+
+### 1.2 Objetivo
 - **O objetivo principal é verificar se a inclusão de um voucher promocional em uma comunicação aumenta a taxa de conversão dos usuários em comparação com uma comunicação sem voucher.**
-    - A versão com voucher oferece um cupom de 15% de desconto em compras acima de R$ 200,00.
+    - A versão com voucher oferece um cupom de 15% de desconto em compras acima de R$ 100,00.
     - A versão sem voucher tem o propósito de gerar lembrança da marca e apresentar informações gerais sobre alguns produtos da empresa, sem oferecer um desconto direto.
 -  **Métrica de sucesso:** A principal métrica de sucesso é a taxa de conversão, medida pelo percentual de compras realizadas após o recebimento da comunicação.
 
@@ -35,7 +36,7 @@ São observadas métricas-chave, como taxa de conversão, tempo de permanência 
     - Aumento percentual na conversão:  
       - (Taxa conversão(voucher) - Taxa conversão(sem voucher)) * 100/ Taxa conversão(sem voucher)
 
-- **Meta de conversão:**
+- **Meta de conversão:** 17%
 
 # 2 Visão geral de alguns conceitos
 
@@ -136,12 +137,12 @@ Se realmente houver uma diferença entre as taxas de conversão dos grupos testa
 
     - Tamanho do Efeito (Effect Size - ES): Refere-se à diferença esperada entre as taxas de conversão dos grupos. Quanto maior for a diferença esperada, menor pode ser a amostra necessária para detectar essa diferença com significância. Por outro lado, diferenças pequenas exigem amostras maiores para serem confirmadas estatisticamente
     - Nível de significância (α): Representa a probabilidade de erro tipo I, ou seja, a chance de rejeitar a hipótese nula quando ela é verdadeira. O valor de α mais comum em experimentos é 0,05 (5%)
-    - Poder do teste (1−β): Mede a capacidade do teste de detectar uma diferença real caso ela exista. Um poder estatístico típico é de 80%, o que significa que o teste terá 80% de chance de detectar um efeito verdadeiro. O complemento disso (β) representa a probabilidade de erro tipo II, ou seja, a chance de não detectar um efeito verdadeiro.
+    - Poder do teste (1−β): **Mede a capacidade do teste de detectar uma diferença real caso ela exista**, ou seja, se refere à probabilidade de um teste estatístico rejeitar corretamente a hipótese nula (H0) quando a hipótese alternativa (H1) é verdadeira. Um poder estatístico típico é de 80%, o que significa que o teste terá 80% de chance de detectar um efeito verdadeiro. O complemento disso (β) representa a probabilidade de erro tipo II, ou seja, a chance de não detectar um efeito verdadeiro.
 
 #### 3.5.1 Tamanho do Efeito
 O tamanho do efeito (Effect Size - ES), no contexto de um teste de hipóteses para taxas de conversão, é simplesmente a diferença entre a taxa de conversão atual e a taxa de conversão esperada (meta que queremos alcançar com a intervenção, como o uso do voucher promocional).   
 
-**Tamanho do Efeito** = 15% − 12% = 3%
+**Tamanho do Efeito** = 17% − 12% = 5%
 
 #### 3.5.2 Nível de significância 
 
@@ -151,7 +152,34 @@ Isso significa que aceitaremos um risco de 5% de erro tipo I, ou seja, a chance 
 
 Se o valor-p obtido no teste for menor que 0.05, rejeitaremos 
 H0, indicando que há evidências estatísticas significativas de que o voucher influencia a taxa de conversão. Caso contrário, se o valor-p for maior ou igual a 0.05, não rejeitaremos H0, concluindo que não há evidências suficientes para afirmar que o voucher tem um impacto significativo.
-1 hora: 35 
+
+#### 3.5.3 Poder do teste (1−β)
+Para garantir maior confiabilidade na detecção de um efeito real, será adotado um poder estatístico de 90%. Isso significa que o teste terá uma probabilidade de 90% de detectar uma diferença significativa entre os grupos caso essa diferença realmente exista. Um poder de 90% reduz a chance de cometer um Erro Tipo II (β), ou seja, a probabilidade de não detectar um efeito real quando ele de fato ocorre
+
+#### 3.5.4 Cálculo de tamanho de amostra
+
+Agora, para calcular o tamanho da amostra necessário, utilizaremos o software GPower, que nos ajudará a determinar o número de participantes com base no nível de significância, poder estatístico e tamanho do efeito desejados.
+
+- Acesse o GPower: Abra o navegador e vá para o site do [GPower:](https://www.psychologie.hhu.de/arbeitsgruppen/allgemeine-psychologie-und-arbeitspsychologie/gpower)
+- Baixe e Instale: Baixe a versão apropriada para o seu sistema operacional e instale o software.
+- Inicie o GPower: Após a instalação, abra o programa.
+- Selecione o Tipo de Teste: No menu principal, selecione o tipo de teste estatístico que você deseja realizar. 
+- Escolha o Tipo de Análise de Poder: Selecione "A priori: Compute required sample size – given α, power, and effect size" para calcular o tamanho da amostra necessário com base no nível de significância (α), poder e tamanho do efeito.
+
+- Insira os Parâmetros:
+    - Tail(s): Aqui você seleciona se o teste é unilateral ("One") ou bilateral ("Two"). Um teste unilateral é usado quando a hipótese alternativa especifica uma direção (por exemplo, maior ou menor), enquanto um teste bilateral é usado quando a direção não é especificada.
+    - Proportion p1: Este é o valor da proporção esperada no primeiro grupo.
+    - Proportion p2: Este é o valor da proporção esperada no segundo grupo. 
+    - α err prob: Este é o nível de significância, geralmente definido como 0.05.
+    - Power (1–β err prob): Este é o poder estatístico desejado, geralmente definido como 0.80 ou 0.90.
+    - Allocation ratio N2/N1: Este é a razão de alocação entre os tamanhos dos dois grupos. Um valor de 1 significa que os dois grupos terão o mesmo número de participantes.
+
+Resultado: 
+![alt text](imagens/calculo_amostra.png)
+
+1.45 renata 
+
+
 ###  3.6 Diferentes Canais de Comunicação
 Cada grupo receberá a mesma comunicação, mas por canais diferentes, para avaliar qual meio tem maior impacto na conversão:
 - E-mail 
@@ -189,14 +217,10 @@ Utilizamos a importação direta via interface gráfica no pgAdmin.
 
 ### 4.1 Preparação dos  Dados
 
-- **Extração e Armazenamento:** Os dados são carregados no PostgreSQL.
+- **Armazenamento:** Os dados são carregados no PostgreSQL.
 - **Transformação dos Dados:** Integramos o banco de dados ao Python para executar as análises e 
-transformações necessárias com linguagem SQL e responder às questões de negócio. Para isso, as tabelas serão 
-unificadas, viabilizando a execução dos testes A/B e as análises no Power BI.
+transformações necessárias com linguagem SQL e responder às questões de negócio. 
 - **Análise Estatística no Python:** Aplicamos o teste A/B para validar os resultados.
-- **Visualização no Power BI:** Desenvolvemos dashboards interativos para tomada de decisão, 
-com versionamento para acompanhar atualizações e manter a rastreabilidade das análises.
-
  
 ## 5. Análises
 
