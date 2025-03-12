@@ -177,8 +177,47 @@ Agora, para calcular o tamanho da amostra necessário, utilizaremos o software G
 
 ![alt text](imagens/calculo_amostra.png)
 
-1.45 renata 
+#### 3.5.4.1 Exemplo de cálculo manual:
+Fórmula para cálculo do tamanho da amostra para comparação de duas proporções independentes:
 
+![alt text](imagens/formula.png)
+
+Referência: [Cálculo de Tamanho de Amostra - UFMG](https://www.est.ufmg.br/~enricoc/pdf/EstatisticaII/aula7-8.pdf)
+
+- Z α/2 = 1.96 (para um nível de confiança de 95%)
+- Zβ = 1.28 (para um poder estatístico de 90%)
+- Proporção no grupo controle, PA = 0.12
+- Proporção  no grupo teste, PB = 0.17
+- Média das Proporções (P-) = 0.145
+
+Cálculo da Variância Combinada  
+2×0.145×(1−0.145) =   
+2×0.145×0.855 =   
+0.24795  
+
+Cálculo da Soma das Variâncias Individuais  
+0.12x(1-0.12)+0.17(1-0.17) =  
+(0.12×0.88)+(0.17×0.83) =  
+0.1056+ 0.1411 =   
+0.2467  
+
+Cálculo do Numerador:   
+((1.96x√0.24795) + (1.28x√0.2467))²  = 
+((1.96x0.49794578)+(1.28x0.496689037))² = 
+(0.9759737229 + 0.635761968)² =   
+1.611735691² =  
+2.597691937
+
+Cálculo do Denominador:
+(0.12−0.17)² = 0.0025
+
+Cálculo final:  
+2.597691937/0.0025 = 1039,077
+ 
+Este valor é muito próximo do valor calculado pelo GPower =  1041.
+
+N**ecessário fazer intervalo de confiança
+para confirmar se na população o resultado ira se repetir. 
 
 ###  3.6 Diferentes Canais de Comunicação
 Cada grupo receberá a mesma comunicação, mas por canais diferentes, para avaliar qual meio tem maior impacto na conversão:
@@ -187,13 +226,6 @@ Cada grupo receberá a mesma comunicação, mas por canais diferentes, para aval
 - SMS  
 
 O objetivo é  medir o impacto do voucher e entender qual canal gera maior engajamento para diferentes perfis de clientes.
-
-
-
-
-
-
-
 
 # 4 Visão geral e preparação dos dados
 
