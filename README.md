@@ -128,6 +128,8 @@ A amostra será estratificada para evitar viés e garantir uma análise mais equ
 
 **A amostra será estratificada considerando idade, gênero e consumo médio na plataforma, garantindo equilíbrio na análise e eliminando vieses. A segmentação por idade permite avaliar diferenças de comportamento entre faixas etárias, enquanto a divisão por gênero assegura uma abordagem mais inclusiva. Além disso, em vez de considerar apenas a última compra, o consumo médio desde o cadastro na plataforma será utilizado, classificando os clientes em diferentes faixas de gasto e reduzindo distorções causadas por sazonalidade ou renda. Essa estrutura assegura uma amostra representativa e balanceada de cada grupo, permitindo uma análise mais precisa do impacto do voucher promocional.**
 
+Os clientes também foram selecionados com base no grau de engajamento e interação. Foram escolhidos aqueles que possuem alto engajamento e que frequentemente abrem e interagem com as mensagens enviadas por WhatsApp ou e-mail. Essa seleção também ajuda a reduzir o viés entre clientes altamente engajados e aqueles com baixo engajamento, garantindo uma análise mais equilibrada e focada no público mais ativo.
+
 ### 3.5 Amostragem
 
 Para garantir que um teste estatístico seja confiável e capaz de detectar diferenças entre grupos, é necessário calcular um tamanho mínimo de amostra adequado. Esse cálculo depende da diferença esperada entre os grupos, do nível de significância (α) e do poder estatístico (1−β). Se o tamanho da amostra for insuficiente, o estudo pode falhar em comprovar uma diferença real, tornando os resultados estatisticamente inconclusivos.  
@@ -201,18 +203,18 @@ Cálculo da Soma das Variâncias Individuais
 0.1056+ 0.1411 =   
 0.2467  
 
-Cálculo do Numerador:   
-((1.96x√0.24795) + (1.28x√0.2467))²  = 
-((1.96x0.49794578)+(1.28x0.496689037))² = 
-(0.9759737229 + 0.635761968)² =   
-1.611735691² =  
-2.597691937
+Cálculo do Numerador:     
+((1.96x√0.24795) + (1.28x√0.2467))²  =   
+((1.96x0.49794578)+(1.28x0.496689037))² =   
+(0.9759737229 + 0.635761968)² =     
+1.611735691² =    
+2.597691937  
 
 Cálculo do Denominador:
 (0.12−0.17)² = 0.0025
 
 Cálculo final:  
-2.597691937/0.0025 = 1039,077
+2.597691937/ 0.0025 = 1039,077
  
 Este valor é muito próximo do valor calculado pelo GPower =  1041.
 
@@ -223,7 +225,6 @@ para confirmar se na população o resultado ira se repetir.
 Cada grupo receberá a mesma comunicação, mas por canais diferentes, para avaliar qual meio tem maior impacto na conversão:
 - E-mail 
 - WhatsApp 
-- SMS  
 
 O objetivo é  medir o impacto do voucher e entender qual canal gera maior engajamento para diferentes perfis de clientes.
 
@@ -231,15 +232,17 @@ O objetivo é  medir o impacto do voucher e entender qual canal gera maior engaj
 
 - **Fonte de Dados:** 
 Os dados foram gerados sinteticamente com base em instruções fornecidas ao chatgpt, 
-detalhando as tabelas e colunas desejadas para simular um cenário de um e-commerce.
+detalhando as tabelas e colunas desejadas para simular um cenário de um e-commerce. 
 As tabelas principais incluem:
-    - **Dim_Clientes:** Dados sobre características e segmento preferencial de compra de 
-    cada cliente.
-    - **Dim_Segmentos:** Classificação dos diferentes segmentos de compra.
-    - **Fato_Conversoes:** Registro dos clientes dos grupos de controle e intervenção, 
+    - **Dim_Clients:** Dados sobre características dos clientes que entrarão no estudo. A tabela dim_clientes contém 2100 pessoas, com idades entre 18 e 75 anos, divididas igualmente em quatro grupos: 18-25, 26-45, 46-60 e acima de 61 anos, temos também a coluna ticket_medio com três categorias: baixo, médio e alto, cada uma com 700 pessoas. E a distribuição de gênero é equilibrada, com 1050 pessoas do gênero feminino e 1050 do gênero masculino.
+    A ideia justamente é ter grupos homogêneos para evitar vieses no estudo.
+    - **Fact_Conversions:** Registro dos clientes dos grupos de controle e teste, 
     indicando se realizaram uma conversão.
-    - **Fato_Orders:** Informações detalhadas sobre os pedidos efetuados.
+    Para gerar essa nova tabela, as seguintes instruções foram fornecidas: 2100 clientes foram divididos entre grupo teste e controle, sendo 1 representando o grupo teste e 0 o controle. A coluna conversion indica se o cliente converteu ou não. Para esse cenário, solicitei que aproximadamente 40% dos clientes do grupo teste (1050) tivessem conversão (em torno de 450 clientes), enquanto o grupo de controle(1050) teve cerca de 10% de conversão (em torno de 115 clientes). Além disso, a tabela inclui uma coluna para o canal de comunicação (whatsapp ou email), que foi dividido igualmente entre os grupos.
+    - **Fact_Orders:** Para a tabela fact_orders, foram resgatados os IDs dos clientes que converteram, com base na tabela fact_conversions. Essa tabela contém os detalhes dos pedidos, como o valor da compra e a data em que ela foi realizada.
     
+
+    teo 51
 Os dados gerados estão no formato CSV.
 Antes do carregamento dos arquivos CSV, foram criadas as tabelas no **PostgreSQL**, 
 garantindo que todas as chaves primárias (PK) e chaves estrangeiras (FK) estivessem 
