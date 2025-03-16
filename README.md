@@ -242,7 +242,7 @@ As tabelas principais incluem:
     - **Fact_Orders:** Para a tabela fact_orders, foram resgatados os IDs dos clientes que converteram, com base na tabela fact_conversions. Essa tabela contém os detalhes dos pedidos, como o valor da compra e a data em que ela foi realizada.
     
 
-    teo 51
+
 Os dados gerados estão no formato CSV.
 Antes do carregamento dos arquivos CSV, foram criadas as tabelas no **PostgreSQL**, 
 garantindo que todas as chaves primárias (PK) e chaves estrangeiras (FK) estivessem 
