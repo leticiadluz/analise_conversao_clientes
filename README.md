@@ -263,24 +263,19 @@ transformações necessárias com linguagem SQL e responder às questões de neg
 
 1. Análise de Conversão:  
     - Qual a taxa de conversão geral dos clientes?  
-    - Existe diferença entre a taxa de conversão do grupo controle vs. grupo de desconto?
-    - Qual segmento de compra (Higiene Pessoal e Cuidados, Livros, Acessórios, Computação.) converte mais?    
-- canal de comunicação
+    - Há uma diferença significativa na taxa de conversão entre o grupo de controle e o grupo que recebeu desconto?
+    - Qual canal de comunicação apresenta a maior taxa de conversão?
 
 2. Segmentação de Clientes e comportamento de compra:  
-    - Como a idade, gênero ou renda influencia a conversão?  
-    - Como a idade, gênero ou renda influencia o valor médio do pedido?
-    - Os clientes do grupo controle gastam mais do que os do grupo de intervenção?
+    - De que forma idade, gênero e renda impactam a taxa de conversão?  
+    - Como idade, gênero e renda influenciam o valor médio do pedido?
+    - Os clientes do grupo de teste apresentam um ticket médio maior do que os do grupo controle?
 
 
-### Visualização no Power BI (verificar)
+### 5.2 Teste de Hipótese:
+- Há uma diferença significativa entre as taxas de conversão dos clientes 
+que receberam o voucher e os que não receberam?
+    - H0: Taxa de Conversão (Voucher) = Taxa de Conversão (Sem Voucher)
+    - Ha: Taxa de Conversão (Voucher) ≠ Taxa de Conversão (Sem Voucher)
 
-Criamos dashboards para visualizar as métricas, incluindo:
-    - Taxa de Conversão por Grupo (Controle vs. Intervenção)
-    - Análise de Receita Gerada pela Campanha
-    - Segmentação de Clientes por Conversão
-
-Esses dashboards serão versionados para acompanhar melhorias e novas necessidades 
-de análise.
-
-#  Análise dos Resultados
+# 6. Análise dos Resultados
