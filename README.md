@@ -263,7 +263,7 @@ transformações necessárias com linguagem SQL e responder às questões de neg
 
 1. Análise de Conversão:  
     - Qual a taxa de conversão geral dos clientes?  
-    - Há uma diferença significativa na taxa de conversão entre o grupo de controle e o grupo que recebeu desconto?
+    - Há uma diferença significativa na taxa de conversão entre o grupo controle e o grupo teste?
     - Qual canal de comunicação apresenta a maior taxa de conversão?
 
 2. Segmentação de Clientes e comportamento de compra:  
