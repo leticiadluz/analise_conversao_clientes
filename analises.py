@@ -11,14 +11,14 @@ password = os.getenv('password')
 host = os.getenv('host')
 port = os.getenv('port')
 
-connection_string = f"postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}"
+connection_string = f'postgresql+psycopg2://{user}:{password}@{host}:{port}/{dbname}'
 engine = create_engine(connection_string)
 
 try:
     with engine.begin() as conn:
         print('Conexão bem-sucedida!')
 except Exception as e:
-    print(f"Erro na conexão: {e}")
+    print(f'Erro na conexão: {e}')
 
 # 1. Análise de Conversão:
 # 1.1 Qual a taxa de conversão geral dos clientes?

@@ -67,9 +67,7 @@ suficientes nos dados para rejeitar uma suposição inicial (hipótese nula) sob
 
 -   O Erro Tipo II (β) ocorre quando não rejeitamos a hipótese nula (H0) mesmo quando ela é falsa. Em outras palavras, é um falso negativo.   
 
- e) **p-valor:** O p-valor é a probabilidade de observarmos um resultado tão 
- extremo quanto o encontrado na amostra, assumindo que a  hipótese nula (H0) 
- seja verdadeira. Ou seja, qual a probabilidade 
+ e) **p-valor:** O p-valor representa a probabilidade de observarmos os dados obtidos na amostra, ou resultados ainda mais extremos, assumindo que a  hipótese nula (H0) é verdadeira. Ou seja, qual a probabilidade 
  de encontrar uma diferença(entre os grupos) ou um valor mais extremo dado 
  que os grupos são iguais, dado que a diferença não existe. 
 
@@ -218,9 +216,6 @@ Cálculo final:
  
 Este valor é muito próximo do valor calculado pelo GPower =  1041.
 
-N**ecessário fazer intervalo de confiança
-para confirmar se na população o resultado ira se repetir. 
-
 ###  3.6 Diferentes Canais de Comunicação
 Cada grupo receberá a mesma comunicação, mas por canais diferentes, para avaliar qual meio tem maior impacto na conversão:
 - E-mail 
@@ -267,8 +262,8 @@ transformações necessárias com linguagem SQL e responder às questões de neg
     - Qual canal de comunicação apresenta a maior taxa de conversão?
 
 2. Segmentação de Clientes e comportamento de compra:  
-    - De que forma idade, gênero e renda impactam a taxa de conversão?  
-    - Como idade, gênero e renda influenciam o valor médio do pedido?
+    - De que forma idade, gênero ou valor do ticket médio impactam a taxa de conversão?  
+    - Como idade influencia o valor médio do pedido?
     - Os clientes do grupo de teste apresentam um ticket médio maior do que os do grupo controle?
 
 
@@ -277,5 +272,10 @@ transformações necessárias com linguagem SQL e responder às questões de neg
 que receberam o voucher e os que não receberam?
     - H0: Taxa de Conversão (Voucher) = Taxa de Conversão (Sem Voucher)
     - Ha: Taxa de Conversão (Voucher) ≠ Taxa de Conversão (Sem Voucher)
+
+### 5.3  Intervalo de Confiança:
+verificar pq eu posso trocar
+intervalo de confinaça por valor
+de p 
 
 # 6. Análise dos Resultados
