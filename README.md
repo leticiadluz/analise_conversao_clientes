@@ -266,7 +266,7 @@ Utilizamos a importação direta via interface gráfica no pgAdmin.
 transformações necessárias com linguagem SQL e responder às questões de negócio. 
 - **Análise Estatística no Python:** Aplicamos o teste A/B para validar os resultados.
  
-## 5. Análises
+# 5. Análises
 
 ### 5.1 Perguntas de Negócios
 
