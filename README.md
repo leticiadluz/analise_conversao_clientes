@@ -1,7 +1,7 @@
 # Análise de Conversão de Clientes com Teste A/B, SQL e Python
 
 ## Resumo
-Este projeto foi desenvolvido com base em dados gerados sinteticamente para fins de demonstração de análise estatística em um cenário de e-commerce. Os dados não representam uma simulação cuidadosamente construída para refletir um caso prático e realista de aplicação de teste A/B.
+Este projeto foi desenvolvido com base em dados gerados sinteticamente para fins de demonstração de análise estatística em um cenário de e-commerce. Os dados representam uma simulação cuidadosamente construída para refletir um caso prático e realista de aplicação de teste A/B.
 
 Este projeto teve como objetivo avaliar, por meio de um teste A/B estatístico, se a inclusão de um voucher de 15% de desconto em uma comunicação promocional aumenta significativamente a taxa de conversão de clientes em um e-commerce, comparando com uma comunicação padrão, sem desconto.
 
@@ -298,7 +298,7 @@ Ele fornerce uma faixa de valores plausíveis para a diferença entre as propor�
 
 Nesta seção, apresentamos os resultados estatísticos e a interpretação dos dados analisados com SQL a partir do experimento A/B, além de possíveis implicações para estratégias de negócios no e-commerce.
 
-#### 6.1 Resultados do Teste Estatístico
+### 6.1 Resultados do Teste Estatístico
 
 Foi aplicado um teste Z para duas proporções independentes com os seguintes dados:
 
@@ -315,7 +315,7 @@ Resultado do teste Z:
 - Como o valor-p é muito menor que 0.05, rejeitamos a hipótese nula (H0).
 - O intervalo de confiança não inclui o zero, o que confirma que a diferença entre as taxas de conversão é estatisticamente significativa.
 - Com isso, temos fortes evidências de que o uso do voucher aumentou significativamente a conversão dos clientes.
-- A interpretação do intervalo de confiança indica que, em 95 de 100 experimentos semelhantes, o aumento real na conversão devido ao voucher estará entre 28,37% e 35,44%. Isso fornece uma estimativa confiável do impacto esperado caso essa estratégia seja aplicada em novos cenário
+- A interpretação do intervalo de confiança indica que, em 95 de 100 experimentos semelhantes, o aumento real na conversão devido ao voucher estará entre 28,37% e 35,44%. Isso fornece uma estimativa confiável do impacto esperado caso essa estratégia seja aplicada em novos cenários.
 
 ### 6.2 Conversão por Grupo e Canal
 - Conversão Geral: 26,9%
@@ -328,7 +328,7 @@ Apesar de os canais (e-mail e WhatsApp) apresentarem conversões similares, o im
 
 Implicação para o negócio: O canal de comunicação, isoladamente, parece não influenciar a conversão de forma relevante. Dessa forma, as empresas podem escolher o canal com melhor custo-benefício ou que ofereça melhor taxa de entrega, sem comprometer a performance da campanha.
 
-#### 6.3 Conversão por Segmento
+### 6.3 Conversão por Segmento
 
 #### 6.3.1 Por Gênero:
 - Feminino: 27,14%
