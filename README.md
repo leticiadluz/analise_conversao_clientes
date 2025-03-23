@@ -1,6 +1,20 @@
 # Análise de Conversão de Clientes com Teste A/B, SQL e Python
 
 ## Resumo
+Este projeto foi desenvolvido com base em dados gerados sinteticamente para fins de demonstração de análise estatística em um cenário de e-commerce. Os dados não representam uma simulação cuidadosamente construída para refletir um caso prático e realista de aplicação de teste A/B.
+
+Este projeto teve como objetivo avaliar, por meio de um teste A/B estatístico, se a inclusão de um voucher de 15% de desconto em uma comunicação promocional aumenta significativamente a taxa de conversão de clientes em um e-commerce, comparando com uma comunicação padrão, sem desconto.
+
+A base do estudo partiu de uma taxa de conversão atual de 12%, e a meta era atingir pelo menos 17% com a ação promocional. Na base, incluímos 2100 clientes, divididos de forma aleatória e estratificada entre os grupos controle e teste (1050 cada), mantendo o equilíbrio por idade, gênero e ticket médio. Cada grupo recebeu a comunicação via e-mail ou WhatsApp, de forma igualmente distribuída.
+
+Foi aplicado um teste Z para duas proporções, utilizando o Python e a biblioteca statsmodels. Os resultados mostraram que o grupo teste (com voucher) teve uma taxa de conversão de 42,86%, enquanto o grupo controle obteve apenas 10,95%. O valor-p foi praticamente nulo (4.74e-61), o que indica forte significância estatística. O intervalo de confiança de 95% para a diferença entre as proporções foi de (28,37%, 35,44%), o que significa que, em 95 de 100 experimentos semelhantes, o aumento real de conversão esperado ao usar o voucher estará dentro desse intervalo.
+
+Além disso, foram feitas análises adicionais com SQL por canal, gênero, faixa etária e ticket médio. Observou-se que:
+- O canal de envio (e-mail ou WhatsApp) teve pouca variação na taxa de conversão.
+- O gênero não impactou significativamente a resposta à promoção.
+- O grupo etário 18–25 anos apresentou a maior taxa de conversão.
+- Clientes com ticket médio alto tiveram conversão levemente maior.
+- O ticket médio do grupo teste foi inferior ao do controle (R$ 306 vs R$ 319), sugerindo que muitos compraram apenas o mínimo necessário para usar o cupom.
 
 ## 1 Introdução
 
@@ -94,7 +108,7 @@ Distribuição da estatística do teste em um teste bilateral:
 ### 3.1 Métrica de sucesso
  A principal métrica de sucesso é a taxa de conversão, medida pelo percentual de compras realizadas após o recebimento da comunicação.
  - Taxa de conversão atual em diferentes canais de comunicação  sem o voucher: 12%
- - Meta de conversão:
+ - Meta de conversão: 17%
 
 ### 3.2 Hipóteses do Teste
 
@@ -274,8 +288,96 @@ que receberam o voucher e os que não receberam?
     - Ha: Taxa de Conversão (Voucher) ≠ Taxa de Conversão (Sem Voucher)
 
 ### 5.3  Intervalo de Confiança:
-verificar pq eu posso trocar
-intervalo de confinaça por valor
-de p 
+ O intervalo de confiança e o teste de hipótese são duas abordagens diferentes para responder a perguntas sobre parâmetros populacionais (como médias, proporções, etc.), mas estão intimamente relacionados. Ambos usam a mesma distribuição amostral do estimador (por exemplo, a diferença entre proporções) e estão baseados nos mesmos princípios estatísticos. Inclusive, conseguimos substituir um teste de hipótese por um intervalo de confiança.
+
+Vantagem do Intervalo de Confiança: O intervalo de confiança não apenas indica se há uma diferença significativa, mas também quantifica a magnitude dessa diferença e a incerteza associada, ele também é mais fácil de interpretar que o valor de p. 
+
+Ele fornerce uma faixa de valores plausíveis para a diferença entre as proporções (p1 ​ −p2) com um certo nível de confiança (por exemplo, 95%). Se o intervalo de confiança não incluir o zero, isso significa que, com 95% de confiança, a diferença entre as proporções não é zero. Em outras palavras, há evidências estatísticas de que as proporções são diferentes.
 
 # 6. Análise dos Resultados
+
+Nesta seção, apresentamos os resultados estatísticos e a interpretação dos dados analisados com SQL a partir do experimento A/B, além de possíveis implicações para estratégias de negócios no e-commerce.
+
+#### 6.1 Resultados do Teste Estatístico
+
+Foi aplicado um teste Z para duas proporções independentes com os seguintes dados:
+
+- Grupo Controle: 115 conversões de 1050 clientes (Taxa de conversão = 10,95%)
+- Grupo Teste: 450 conversões de 1050 clientes (Taxa de conversão = 42,86%)
+
+Resultado do teste Z:
+- Estatística Z = 16.4845
+- Valor-p = 4.7412e-61
+- Intervalo de confiança (95%) para a diferença entre as proporções = (0.2837, 0.3544)
+
+#### 6.1.1 Interpretação:
+
+- Como o valor-p é muito menor que 0.05, rejeitamos a hipótese nula (H0).
+- O intervalo de confiança não inclui o zero, o que confirma que a diferença entre as taxas de conversão é estatisticamente significativa.
+- Com isso, temos fortes evidências de que o uso do voucher aumentou significativamente a conversão dos clientes.
+- A interpretação do intervalo de confiança indica que, em 95 de 100 experimentos semelhantes, o aumento real na conversão devido ao voucher estará entre 28,37% e 35,44%. Isso fornece uma estimativa confiável do impacto esperado caso essa estratégia seja aplicada em novos cenário
+
+### 6.2 Conversão por Grupo e Canal
+- Conversão Geral: 26,9%
+- Grupo Teste: 42,86%
+- Grupo Controle: 10,95%
+- E-mail: 27,14%
+- WhatsApp: 26,67%
+
+Apesar de os canais (e-mail e WhatsApp) apresentarem conversões similares, o impacto do voucher foi muito mais significativo do que o canal utilizado.
+
+Implicação para o negócio: O canal de comunicação, isoladamente, parece não influenciar a conversão de forma relevante. Dessa forma, as empresas podem escolher o canal com melhor custo-benefício ou que ofereça melhor taxa de entrega, sem comprometer a performance da campanha.
+
+#### 6.3 Conversão por Segmento
+
+#### 6.3.1 Por Gênero:
+- Feminino: 27,14%
+- Masculino: 26,67%
+
+As taxas são bastante semelhantes entre os gêneros, indicando que o efeito do voucher foi consistente.  
+
+Implicação para o negócio: Estratégias promocionais com cupons de desconto parecem ser igualmente eficazes entre homens e mulheres, não sendo necessário customizar esse tipo de benefício por gênero.
+
+#### 6.3.2 Por Faixa Etária:
+- 18–25: 28%
+- 26–45: 25,71%
+- 46–60: 26,86%
+-  Mais de 60: 27,05%
+
+As diferenças são pequenas, mostrando que o efeito do voucher ocorreu de forma semelhante em todas as faixas etárias.
+
+Implicação para o negócio: O voucher pode ser aplicado de forma ampla para diferentes faixas etárias, já que seu impacto foi relativamente uniforme. Entretanto, como os mais jovens (18–25) apresentaram a maior taxa, pode ser interessante criar comunicações específicas para este grupo, explorando a linguagem e canais que mais utilizam.
+
+#### 6.3.3 Por Ticket Médio:
+- Baixo: 26,71%
+- Médio: 25,43%
+- Alto: 28,57%
+
+Clientes com maior ticket médio tiveram uma taxa de conversão levemente superior.
+
+Implicação para o negócio: Os clientes que já possuem maior histórico de compras tendem a responder melhor a incentivos. A empresa pode considerar ações personalizadas com valores de cupons escalonados por perfil de ticket médio.
+
+### 6.4 Análise do Ticket Médio por Grupo
+- Grupo Controle: R$ 319,12
+- Grupo Teste: R$ 306,00
+
+Apesar do grupo teste ter convertido mais, o ticket médio foi ligeiramente menor. Isso pode ser explicado pelo incentivo do cupom, que estimula compras próximas ao valor mínimo de R$ 100 para obtenção do desconto.
+
+Implicação para o negócio: O aumento da conversão veio acompanhado de um pequeno recuo no ticket médio. Isso reforça a importância de calibrar o valor mínimo de compra para uso do cupom, de modo a evitar que clientes "comprem apenas o necessário" para obter o desconto.
+
+# 7 Conclusão Geral e Recomendações
+
+O teste A/B indicou com forte evidência estatística que o voucher de 15% aumentou significativamente a taxa de conversão. O efeito foi consistente entre diferentes faixas etárias, gêneros e perfis de ticket médio, validando a eficácia da campanha promocional.
+
+Recomendações:
+- Manter campanhas com voucher para públicos amplos, pois seu efeito foi generalizado.
+- Avaliar o valor mínimo para uso do cupom, buscando equilibrar volume de conversões e ticket médio.
+- Seguir usando WhatsApp e e-mail, priorizando o canal com melhor entrega e engajamento, já que ambos se mostraram equivalentes.
+- Explorar segmentações por ticket médio e idade, desenvolvendo campanhas específicas para clientes de alto valor ou para grupos jovens mais responsivos.
+
+Esse experimento reforça como a experimentação controlada (teste A/B) pode oferecer respostas práticas e confiáveis para tomada de decisão em e-commerce.
+
+Autor:
+Leticia da Luz
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin)](https://www.linkedin.com/in/leticiadluz/)
